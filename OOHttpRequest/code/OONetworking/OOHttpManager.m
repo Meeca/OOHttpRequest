@@ -87,7 +87,6 @@ OOHttpSingletonM
             NSString *str = [NSString stringWithFormat:@"%@=%@",key,obj];
             [array addObject:str];
         }
-        
         NSString *parametersString = [array componentsJoinedByString:@"&"];
         return  [urlString stringByAppendingString:[NSString stringWithFormat:@"?%@",parametersString]];
     }

@@ -41,16 +41,22 @@ OOHttpSingletonM
         config.baseUrl      = configs.baseUrl;
         config.param        = configs.param;
         config.method       = configs.method;
-        config.dataArray    = configs.dataArray;
         config.cache        = configs.cache;
         config.imageDatas   = configs.imageDatas;
         config.attach       = configs.attach;
         config.log          = configs.log;
 
-    } progress:^(float progress) {
+        config.hud          = configs.hud;
+        config.succMsg      = configs.succMsg;
+        config.loadingMsg   = configs.loadingMsg;
+        config.failureMsg   = configs.failureMsg;
+
+        
+        
+    } progress:^(float progres) {
         
         if (_oo_progress) {
-            _oo_progress(progress);
+            _oo_progress(progres);
         }
         
     } cacheSuccess:^(id responseObject, NSString *msg) {

@@ -10,6 +10,7 @@
 #import "OOHttpRequest.h"
 #import "OOHttpCacheRequest.h"
 #import <LxDBAnything/LxDBAnything.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface OOHttpAnalysis()
 
@@ -30,7 +31,7 @@ OOHttpSingletonM
  *  @param failure    失败的回调
  */
 - (NSURLSessionTask *)requestWithConfig:( void (^)(OOHttpRequestConfig *config))block
-                               progress:( void (^)(float progress))progress
+                               progress:( void (^)(float progres))progress
                            cacheSuccess:( void (^)(id responseObject,NSString * msg))cacheSuccess
                                 success:( void (^)(id responseObject,NSString * msg))success
                                 failure:( void (^)(NSString * error,NSInteger code))failure{
@@ -39,6 +40,8 @@ OOHttpSingletonM
         block(self.config);
     }
 
+    [self loading];
+    
     NSURLSessionTask *session  = [[OOHttpCacheRequest alloc] requestWithConfig:^(OOHttpRequestConfig *config) {
         
         config.url          =   self.config.url;
@@ -48,7 +51,6 @@ OOHttpSingletonM
         config.attach       =   self.config.attach;
         config.imageDatas   =   self.config.imageDatas;
         config.cache        =   self.config.cache;
-        config.dataArray    =   self.config.dataArray;
         config.log          =   self.config.log;
 
 
@@ -58,11 +60,12 @@ OOHttpSingletonM
         
     } cacheSuccess:^(id responseObjects) {
         
-        [self returnResponseObject:responseObjects success:cacheSuccess failure:failure];
+        [self returnResponseObject:responseObjects cache:YES success:cacheSuccess failure:failure];
+        
         
     } success:^(id responseObject) {
         
-        [self returnResponseObject:responseObject success:success failure:failure];
+        [self returnResponseObject:responseObject cache:NO success:success failure:failure];
         
     } failure:^(NSString *error) {
         failure(error,404);
@@ -74,6 +77,7 @@ OOHttpSingletonM
 
 
 - (void)returnResponseObject:(id )responseObject
+                       cache:(BOOL )cache
                      success:( void (^)(id respons,NSString * msg))success
                      failure:( void (^)(NSString * error,NSInteger code))failure{
         
@@ -91,9 +95,15 @@ OOHttpSingletonM
             
             if ([code isEqualToString:@"0"]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    cache?@"":[self successMsg:msg];
+
                     success(info,msg);
                 });
             }else{
+                
+                cache?@"":[self failureMsg:msg];
+                
                 failure(msg,[code integerValue]);
             }
         }
@@ -109,9 +119,48 @@ OOHttpSingletonM
 }
 
 
+- (void)loading{
+
+    BOOL hud = self.config.hud;
+    NSString * loading = self.config.loadingMsg;
+
+    if (hud) {
+        if (loading) {
+            [SVProgressHUD showWithStatus:loading];
+        }else{
+            [SVProgressHUD show];
+        }
+    }
+}
+
+- (void)successMsg:(NSString *)message{
+
+    BOOL hud = self.config.hud;
+    NSString * msg = self.config.succMsg;
+
+    if (hud) {
+        if (msg) {
+            [SVProgressHUD showSuccessWithStatus:msg];
+        }else{
+            [SVProgressHUD showSuccessWithStatus:message];
+        }
+    }
+}
+
+- (void)failureMsg:(NSString *)error{
+    
+    BOOL hud = self.config.hud;
+    NSString * msg = self.config.failureMsg;
+    if (hud) {
+        if (msg) {
+            [SVProgressHUD showErrorWithStatus:msg];
+        }else{
+            [SVProgressHUD showErrorWithStatus:error];
+        }
+    }
+}
+
 - (void)logInfoWith:(id)info{
-    
-    
 #ifdef DEBUG
     BOOL log = self.config.log;
     if (log) {

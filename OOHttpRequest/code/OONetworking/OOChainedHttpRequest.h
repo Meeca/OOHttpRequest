@@ -20,7 +20,7 @@ typedef void(^OOCacheData)(id responseObj);
 //失败回调
 typedef void(^OOFailure)(NSString * error,NSInteger code);
 //进度回调
-typedef void(^OOProgress)(float progress);
+typedef void(^OOProgress)(float progres);
 
 @interface OOChainedHttpRequest : NSObject
 

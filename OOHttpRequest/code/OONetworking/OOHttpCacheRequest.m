@@ -31,7 +31,7 @@
  */
 
 - (NSURLSessionTask *)requestWithConfig:( void (^)(OOHttpRequestConfig *config))block
-                               progress:( void (^)(float progress))progress
+                               progress:( void (^)(float progres))progress
                            cacheSuccess:( void (^)(id responseObject))cacheSuccess
                                 success:( void (^)(id responseObject))success
                                 failure:( void (^)(NSString * error))failure{
@@ -82,8 +82,9 @@
         config.attach       = self.config.attach;
         config.imageDatas   = self.config.imageDatas;
         config.cache        = self.config.cache;
-        config.dataArray    = self.config.dataArray;
         config.log          = self.config.log;
+        
+
         
     } progress:^(float progres) {
         

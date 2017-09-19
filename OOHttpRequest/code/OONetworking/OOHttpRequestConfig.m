@@ -117,6 +117,51 @@
 }
 
 
+- (OOHttpRequestConfig *(^)(BOOL isHud))isHud{
+
+    return ^OOHttpRequestConfig * (BOOL isHud) {
+        self.hud = isHud;
+        return self;
+    };
+}
+
+- (OOHttpRequestConfig *(^)(NSString *))loadingmsg{
+
+    return ^OOHttpRequestConfig * (NSString * string) {
+        self.loadingMsg = string;
+        return self;
+    };
+}
+
+- (OOHttpRequestConfig *(^)(NSString * string))succmsg{
+
+    return ^OOHttpRequestConfig * (NSString * string) {
+        self.succMsg = string;
+        return self;
+    };
+}
+
+- (OOHttpRequestConfig *(^)(NSString * string))failuremsg{
+
+    return ^OOHttpRequestConfig * (NSString * string) {
+        self.failureMsg = string;
+        return self;
+    };
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @end
 
 

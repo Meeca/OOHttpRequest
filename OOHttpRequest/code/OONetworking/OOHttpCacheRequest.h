@@ -22,7 +22,7 @@
  *  @param failure    失败的回调
  */
 - (NSURLSessionTask *)requestWithConfig:( void (^)(OOHttpRequestConfig *config))block
-                               progress:( void (^)(float progress))progress
+                               progress:( void (^)(float progres))progress
                            cacheSuccess:( void (^)(id responseObject))cacheSuccess
                                 success:( void (^)(id responseObject))success
                                 failure:( void (^)(NSString * error))failure;

@@ -90,7 +90,6 @@ OOHttpSingletonM
     
 }
 
-
 - (OOHttpRequestConfig *)config {
     if (_config == nil) {
         _config = [OOHttpRequestConfig defultCongfig];

@@ -43,7 +43,10 @@
         config.param = params;
         config.dataArray = _dataArray;
         config.cache = YES;
-        
+        config.hud = YES;
+//        config.loadingMsg = @"123";
+        config.succMsg = @"加载成功";
+
     }]
     .startRequest()
     .progress(^(float progres){
@@ -80,10 +83,9 @@
         
         config.url = @"/api/news/getList/cid";
         config.param = params;
-        config.dataArray = _dataArray;
         config.cache = YES;
         
-    } progress:^(float progress) {
+    } progress:^(float progres) {
         
         
     } cacheSuccess:^(id responseObject, NSString *msg) {
@@ -103,7 +105,7 @@
 
 #pragma mark - UITableViewDelegate UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return _dataArray.count;
+    return 20;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -113,10 +115,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     GardenNoticeViewCell * cell  = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([GardenNoticeViewCell class])];
-    if (_dataArray.count > indexPath.section) {
-        ConsultModel * consultModel = _dataArray[indexPath.section];
-        cell.consultModel  =consultModel;
-    }
+//    if (_dataArray.count > indexPath.section) {
+//        ConsultModel * consultModel = _dataArray[indexPath.section];
+//        cell.consultModel  =consultModel;
+//    }
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -144,7 +146,7 @@
 -(UITableView *)tableView
 {
     if(_tableView == nil){
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height) style:UITableViewStyleGrouped];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
         _tableView.rowHeight = UITableViewAutomaticDimension;

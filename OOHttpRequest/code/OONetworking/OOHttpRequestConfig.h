@@ -39,33 +39,54 @@ typedef NS_ENUM(NSInteger, OORequestMethod) {
 // 是否打印log信息
 @property (nonatomic, assign) BOOL  log;
 
-//是否缓存数据
-@property (nonatomic, assign) BOOL  cache;
 
 // 需要处理的数据数组
 @property (nonatomic, strong) NSArray * dataArray;
 
+/**********************  上传图片  ******************************/
 // 需要上传的图片data数组
 @property (nonatomic, strong) NSArray * imageDatas;
 // 服务器对应的图片的key
 @property (nonatomic, copy) NSString * attach;
 
 
-/*!
- *   cacheMaxAge 缓存过期时间
- */
+/**********************  缓存  ******************************/
+//是否缓存数据
+@property (nonatomic, assign) BOOL  cache;
+
+// 缓存过期时间
 @property (nonatomic,assign) NSTimeInterval cacheMaxAge;
 
-/*!
- *   requestMinTime 同一个请求间隔多长时间才能重新请求（用于缓存）
- */
+// 同一个请求间隔多长时间才能重新请求（用于缓存）
 @property (nonatomic,assign) NSTimeInterval requestMinTime;
+
+
+
+/**********************  HUD  ******************************/
+
+@property (nonatomic, assign) BOOL  hud;
+
+@property (nonatomic,copy) NSString * loadingMsg;
+
+@property (nonatomic,copy) NSString * succMsg;
+
+@property (nonatomic,copy) NSString * failureMsg;
+
 
 
 
 
 
 //链式编程体验
+- (OOHttpRequestConfig *(^)(BOOL isHud))isHud;
+
+- (OOHttpRequestConfig *(^)(NSString * string))loadingmsg;
+
+- (OOHttpRequestConfig *(^)(NSString * string))succmsg;
+
+- (OOHttpRequestConfig *(^)(NSString * string))failuremsg;
+
+
 - (OOHttpRequestConfig *(^)(NSString * string))urlStr;
 
 - (OOHttpRequestConfig *(^)(NSString * string))baseURL;
@@ -76,6 +97,7 @@ typedef NS_ENUM(NSInteger, OORequestMethod) {
 - (OOHttpRequestConfig *(^)(BOOL isCache))isCache;
 
 - (OOHttpRequestConfig *(^)(BOOL isLog))isLog;
+
 
 
 - (OOHttpRequestConfig *(^)(NSDictionary *parameters))parameters;

@@ -63,9 +63,7 @@
  
  }].cachesuccess(^(id responseObject,NSString * msg){
  
- 
- 
- 
+  
  }).success(^(id responseObject,NSString * msg){
  
  
