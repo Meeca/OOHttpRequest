@@ -54,12 +54,12 @@
     })
     .cacheData(^(id responseObject){
         
-        NSLog(@"缓存--- \n%@",responseObject);
+//        NSLog(@"缓存--- \n%@",responseObject);
         
     })
     .success(^(id responseObject,NSString * msg){
         
-        NSLog(@"网络--- \n%@",responseObject);
+//        NSLog(@"网络--- \n%@",responseObject);
         
     })
     .failure(^(NSString * error,NSInteger code){
@@ -90,11 +90,11 @@
         
     } cacheSuccess:^(id responseObject, NSString *msg) {
         
-        NSLog(@"缓存cacheSuccess ---  \n %@",responseObject);
+//        NSLog(@"缓存cacheSuccess ---  \n %@",responseObject);
         
     } success:^(id responseObject, NSString *msg) {
         
-        NSLog(@"网络success ---  \n %@",responseObject);
+//        NSLog(@"网络success ---  \n %@",responseObject);
         
     } failure:^(NSString *error, NSInteger code) {
         

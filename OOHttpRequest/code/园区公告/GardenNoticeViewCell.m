@@ -55,8 +55,6 @@
         make.bottom.equalTo(self.coverView).offset(-10);
         make.height.mas_equalTo(70);
         make.width.mas_equalTo(70/3*4);
-//        make.width.mas_equalTo(100);
-
     }];
     
     [self.titleLab mas_makeConstraints:^(MASConstraintMaker *make) {

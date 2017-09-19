@@ -48,9 +48,6 @@ OOHttpSingletonM
         }
     }
     
-    [self uuuu];
-    
-    
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.requestSerializer.stringEncoding = NSUTF8StringEncoding;

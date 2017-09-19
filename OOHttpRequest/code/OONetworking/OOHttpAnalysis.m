@@ -68,6 +68,9 @@ OOHttpSingletonM
         [self returnResponseObject:responseObject cache:NO success:success failure:failure];
         
     } failure:^(NSString *error) {
+        
+        [self failureMsg:error];
+        
         failure(error,404);
     }];
     
@@ -87,7 +90,7 @@ OOHttpSingletonM
             
             NSDictionary *  requestDic = (NSDictionary *)result;
             
-            [self logInfoWith:requestDic];
+            [self logInfoWith:requestDic cache:cache];
             
             NSString *  msg = requestDic[@"msg"];
             NSString *  code = [NSString stringWithFormat:@"%@",requestDic[@"code"]];
@@ -160,11 +163,12 @@ OOHttpSingletonM
     }
 }
 
-- (void)logInfoWith:(id)info{
+- (void)logInfoWith:(id)info cache:(BOOL)cache{
 #ifdef DEBUG
     BOOL log = self.config.log;
     if (log) {
-       printf("\n\nOOHttpAnalysis\n网络请求数据\n📍\n%s\n📍\n", [[NSString stringWithFormat:@"%@", info] UTF8String]);
+        NSString * msg = cache?@"缓存数据":@"网络请求数据";
+       printf("\n\nOOHttpAnalysis\n %s \n📍\n%s\n📍\n",[msg UTF8String],[[NSString stringWithFormat:@"%@", info] UTF8String]);
     }
 #else
 #endif
