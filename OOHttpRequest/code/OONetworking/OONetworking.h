@@ -54,7 +54,7 @@
  NSMutableDictionary * params = [NSMutableDictionary new];
  params[@"cid"] = @"2";
  
- [OORequest requestWithConfig:^(OOHttpRequestConfig *config) {
+ [OORequest requestConfig:^(OOHttpRequestConfig *config) {
  
      config.url = @"/api/news/getList/cid";
      config.param = params;

@@ -19,7 +19,7 @@
 
 OOHttpSingletonM
 
-- (OOChainedHttpRequest *)requestWithConfig:( void (^)(OOHttpRequestConfig *config))block{
+- (OOChainedHttpRequest *)requestConfig:( void (^)(OOHttpRequestConfig *config))block{
     if (block) {
         block(self.config);
     }
@@ -35,7 +35,7 @@ OOHttpSingletonM
 
 - (void)startRequestAPIWithRecorder:(OOHttpRequestConfig *)configs {
     
-    [[OOHttpAnalysis sharedInstance] requestWithConfig:^(OOHttpRequestConfig *config) {
+    [[OOHttpAnalysis sharedInstance] requestConfig:^(OOHttpRequestConfig *config) {
         
         config.url          = configs.url;
         config.baseUrl      = configs.baseUrl;
@@ -50,7 +50,6 @@ OOHttpSingletonM
         config.succMsg      = configs.succMsg;
         config.loadingMsg   = configs.loadingMsg;
         config.failureMsg   = configs.failureMsg;
-
         
         
     } progress:^(float progres) {

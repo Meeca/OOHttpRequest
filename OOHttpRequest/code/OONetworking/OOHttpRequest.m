@@ -24,7 +24,7 @@ static NSMutableArray *requestTasks;
 
 OOHttpSingletonM
 
-- (NSURLSessionTask *)requestWithConfig:( void (^)(OOHttpRequestConfig *config))block
+- (NSURLSessionTask *)requestConfig:( void (^)(OOHttpRequestConfig *config))block
                                progress:( void (^)(float progres))progress
                                 success:( void (^)(id responseObject))success
                                 failure:( void (^)(NSString * error))failure{

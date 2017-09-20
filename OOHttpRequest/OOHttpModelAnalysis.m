@@ -25,7 +25,7 @@
 
 OOHttpSingletonM
 
-- (NSURLSessionTask *)requestWithConfig:(void(^)(OOHttpRequestConfig *configs))block
+- (NSURLSessionTask *)requestConfig:(void(^)(OOHttpRequestConfig *configs))block
                         cacheSuccess:( void (^)(NSArray * dataArray))cacheSuccess
                              success:( void (^)(NSArray * dataArray,NSString * msg))success
                              failure:( void (^)(NSString * error,NSInteger code))failure{
@@ -38,7 +38,7 @@ OOHttpSingletonM
     
     __block NSArray * cacheArray = nil;
     
-    NSURLSessionTask *session = [[OOHttpAnalysis sharedInstance]  requestWithConfig:^(OOHttpRequestConfig *config) {
+    NSURLSessionTask *session = [[OOHttpAnalysis sharedInstance]  requestConfig:^(OOHttpRequestConfig *config) {
         
         config = self.config;
         

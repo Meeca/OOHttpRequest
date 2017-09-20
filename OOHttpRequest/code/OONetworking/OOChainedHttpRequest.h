@@ -38,7 +38,7 @@ OOHttpSingletonH
 - (OOChainedHttpRequest *(^)(OOProgress progress))progress;
 - (OOChainedHttpRequest *(^)())startRequest;//发起请求
 
-- (OOChainedHttpRequest *)requestWithConfig:( void (^)(OOHttpRequestConfig *config))block;
+- (OOChainedHttpRequest *)requestConfig:( void (^)(OOHttpRequestConfig *config))block;
 
 
 

@@ -36,7 +36,7 @@
     NSMutableDictionary * params = [NSMutableDictionary new];
     params[@"cid"] = @"2";
     
-    [OORequest requestWithConfig:^(OOHttpRequestConfig *config) {
+    [OORequest requestConfig:^(OOHttpRequestConfig *config) {
         
         config.url = @"/api/news/getList/cid";
         config.baseUrl = @"http://wuye.mcykj.com";
@@ -79,7 +79,7 @@
     params[@"cid"] = @"2";
     
     
-    [[OOHttpAnalysis sharedInstance] requestWithConfig:^(OOHttpRequestConfig *config) {
+    [[OOHttpAnalysis sharedInstance] requestConfig:^(OOHttpRequestConfig *config) {
         
         config.url = @"/api/news/getList/cid";
         config.param = params;

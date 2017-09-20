@@ -30,7 +30,7 @@
  *  @param failure    失败的回调
  */
 
-- (NSURLSessionTask *)requestWithConfig:( void (^)(OOHttpRequestConfig *config))block
+- (NSURLSessionTask *)requestConfig:( void (^)(OOHttpRequestConfig *config))block
                                progress:( void (^)(float progres))progress
                            cacheSuccess:( void (^)(id responseObject))cacheSuccess
                                 success:( void (^)(id responseObject))success
@@ -73,7 +73,7 @@
     }
     
     NSURLSessionTask * session = nil;
-    session= [[OOHttpRequest sharedInstance] requestWithConfig:^(OOHttpRequestConfig *config) {
+    session= [[OOHttpRequest sharedInstance] requestConfig:^(OOHttpRequestConfig *config) {
         
         config.url          = self.config.url;
         config.baseUrl      = self.config.baseUrl;

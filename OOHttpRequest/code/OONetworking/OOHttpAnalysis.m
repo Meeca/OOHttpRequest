@@ -30,7 +30,7 @@ OOHttpSingletonM
  *  @param success    成功的回调
  *  @param failure    失败的回调
  */
-- (NSURLSessionTask *)requestWithConfig:( void (^)(OOHttpRequestConfig *config))block
+- (NSURLSessionTask *)requestConfig:( void (^)(OOHttpRequestConfig *config))block
                                progress:( void (^)(float progres))progress
                            cacheSuccess:( void (^)(id responseObject,NSString * msg))cacheSuccess
                                 success:( void (^)(id responseObject,NSString * msg))success
@@ -42,7 +42,7 @@ OOHttpSingletonM
 
     [self loading];
     
-    NSURLSessionTask *session  = [[OOHttpCacheRequest alloc] requestWithConfig:^(OOHttpRequestConfig *config) {
+    NSURLSessionTask *session  = [[OOHttpCacheRequest alloc] requestConfig:^(OOHttpRequestConfig *config) {
         
         config.url          =   self.config.url;
         config.baseUrl      =   self.config.baseUrl;

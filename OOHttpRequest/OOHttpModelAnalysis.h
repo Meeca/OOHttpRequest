@@ -16,7 +16,7 @@
 OOHttpSingletonH
 
 
-- (NSURLSessionTask *)requestWithConfig:(void(^)(OOHttpRequestConfig *config))block
+- (NSURLSessionTask *)requestConfig:(void(^)(OOHttpRequestConfig *config))block
                         cacheSuccess:( void (^)(NSArray * dataArray))cacheSuccess
                              success:( void (^)(NSArray * dataArray,NSString * msg))success
                              failure:( void (^)(NSString * error,NSInteger code))failure;
