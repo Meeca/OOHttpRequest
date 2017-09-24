@@ -34,18 +34,26 @@
     [self.view addSubview:self.tableView];
     
     NSMutableDictionary * params = [NSMutableDictionary new];
-    params[@"cid"] = @"2";
+    params[@"u_id"] = @"8";
+    params[@"a_id"] = @"259";
+    params[@"lat"] = @"44";
+    params[@"long"] = @"166";
+
+    
+http://www.pidans.xyz/temperature//api.php/Index/index?u_id=8&lat=0&long=0&a_id=166
+
     
     [OORequest requestConfig:^(OOHttpRequestConfig *config) {
         
-        config.url = @"/api/news/getList/cid";
-        config.baseUrl = @"http://wuye.mcykj.com";
+        config.url = @"/temperature//api.php/Index/index";
+        config.baseUrl = @"http://www.pidans.xyz";
         config.param = params;
         config.dataArray = _dataArray;
         config.cache = YES;
         config.hud = YES;
 //        config.loadingMsg = @"123";
         config.succMsg = @"加载成功";
+        config.urlExplain = @"地址说明";
 
     }]
     .startRequest()
@@ -84,6 +92,7 @@
         config.url = @"/api/news/getList/cid";
         config.param = params;
         config.cache = YES;
+        config.urlExplain = @"地址说明";
         
     } progress:^(float progres) {
         

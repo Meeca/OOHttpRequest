@@ -83,7 +83,7 @@
         config.imageDatas   = self.config.imageDatas;
         config.cache        = self.config.cache;
         config.log          = self.config.log;
-        
+        config.urlExplain   = self.config.urlExplain;
 
         
     } progress:^(float progres) {

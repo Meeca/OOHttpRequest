@@ -89,48 +89,70 @@ OOHttpSingletonM
     }
 }
 
-
-
-+ (void)uuuu{
-
-    AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
-    [manager startMonitoring];
-    
-    [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-       
-        switch (status) {
-            case AFNetworkReachabilityStatusUnknown: {
-        //未知网络 NSLog(@"未知网络");
+#pragma mark - 开始监听网络
+- (void)networkStatusWithBlock:(void (^)(AFNetworkReachabilityStatus status,NSString * netState))networkStatus {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
+        [manager startMonitoring];
+        [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+           
+            switch (status) {
+                case AFNetworkReachabilityStatusUnknown:
+                    networkStatus ? networkStatus(AFNetworkReachabilityStatusUnknown,@"未知网络") : nil;
+                   NSLog(@"未知网络");
+                    break;
+                case AFNetworkReachabilityStatusNotReachable:
+                    networkStatus ? networkStatus(AFNetworkReachabilityStatusNotReachable,@"无网络") : nil;
+                    NSLog(@"无网络");
+                    break;
+                case AFNetworkReachabilityStatusReachableViaWWAN:{
+                    
+                    NSString * state = [self getNetworkStates];
+                    networkStatus ? networkStatus(AFNetworkReachabilityStatusReachableViaWWAN,state) : nil;
+                    NSLog(@"手机自带网络--%@",state);
+                }
+                    break;
+                case AFNetworkReachabilityStatusReachableViaWiFi:
+                    networkStatus ? networkStatus(AFNetworkReachabilityStatusReachableViaWiFi,@"WIFI") : nil;
+                     NSLog(@"WIFI");
+                    break;
             }
-                break;
-            case AFNetworkReachabilityStatusNotReachable: {
-                //无法联网
-                NSLog(@"无法联网");
-                
-                
-                [XHToast showCenterWithText:@"无法联网"];
-            }
-                break;
-            case AFNetworkReachabilityStatusReachableViaWWAN: {
-                //手机自带网络
-                NSLog(@"当前使用的是2g/3g/4g网络");
-                
-                [XHToast showCenterWithText:@"当前使用的是2g/3g/4g网络"];
-
-            }
-                break;
-            case AFNetworkReachabilityStatusReachableViaWiFi: {
-                //WIFI
-                NSLog(@"当前在WIFI网络下");
-                
-                [XHToast showCenterWithText:@"当前在WIFI网络下"];
-
-            }
-        }
-    }];
-    
+        }];
+    });
 }
 
+- (NSString * )getNetworkStates {
+    NSArray *subviews = [[[[UIApplication sharedApplication] valueForKeyPath:@"statusBar"] valueForKeyPath:@"foregroundView"] subviews];
+    for (id child in subviews) {
+        if ([child isKindOfClass:NSClassFromString(@"UIStatusBarDataNetworkItemView")]) {
+            NSInteger networkType = [[child valueForKeyPath:@"dataNetworkType"] integerValue];
+            switch (networkType) {
+                case 1: {
+                    return @"2G";
+                }
+                    break;
+                case 2: {
+                    return @"3G";
+                } break;
+                case 3: {
+                    return @"4G";
+                }
+                    break;
+                case 5: {
+                    return @"WIFI";
+                }
+                    break;
+                default: {
+                    return @"none";
+                }
+                    break;
+            }
+        }
+    }
+    return 0;
+}
 
 #pragma mark  请求前统一处理：如果是没有网络，则不论是GET请求还是POST请求，均无需继续处理
 + (BOOL)examineNetwork {

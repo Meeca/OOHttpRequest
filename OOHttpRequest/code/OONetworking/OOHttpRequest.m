@@ -216,7 +216,8 @@ OOHttpSingletonM
     if (log) {
         NSString * urls = [[OOHttpManager sharedInstance].baseUrl stringByAppendingString:url];
         NSString * urlstr = [OOHttpManager urlString:urls appendingParameters:parame];
-        printf("\n请求地址\n📍--->  %s\n📍", [[NSString stringWithFormat:@"%@", urlstr] UTF8String]);
+        NSString * explain = self.config.urlExplain?self.config.urlExplain:@"请求地址";
+        printf("\n📍\n🎈   %s \n--->  %s\n📍",[[NSString stringWithFormat:@"%@", explain] UTF8String], [[NSString stringWithFormat:@"%@", urlstr] UTF8String]);
     }
 #else
 #endif

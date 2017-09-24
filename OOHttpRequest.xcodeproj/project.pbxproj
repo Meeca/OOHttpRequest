@@ -16,9 +16,6 @@
 		B29F2BAD1F70EECA00FDA432 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B29F2BAB1F70EECA00FDA432 /* LaunchScreen.storyboard */; };
 		B29F2BB81F70EECA00FDA432 /* OOHttpRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B29F2BB71F70EECA00FDA432 /* OOHttpRequestTests.m */; };
 		B29F2BC31F70EECA00FDA432 /* OOHttpRequestUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B29F2BC21F70EECA00FDA432 /* OOHttpRequestUITests.m */; };
-		B29F2BD81F70EFD600FDA432 /* NSArray+UnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = B29F2BD31F70EFD600FDA432 /* NSArray+UnicodeReadable.m */; };
-		B29F2BD91F70EFD600FDA432 /* NSDictionary+UnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = B29F2BD51F70EFD600FDA432 /* NSDictionary+UnicodeReadable.m */; };
-		B29F2BDA1F70EFD600FDA432 /* NSSet+UnicodeReadable.m in Sources */ = {isa = PBXBuildFile; fileRef = B29F2BD71F70EFD600FDA432 /* NSSet+UnicodeReadable.m */; };
 		B29F2BE01F70EFDD00FDA432 /* ConsultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B29F2BDD1F70EFDD00FDA432 /* ConsultModel.m */; };
 		B29F2BE11F70EFDD00FDA432 /* GardenNoticeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B29F2BDF1F70EFDD00FDA432 /* GardenNoticeViewCell.m */; };
 		B29F2BF61F70EFE600FDA432 /* OOCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B29F2BE41F70EFE600FDA432 /* OOCacheManager.m */; };
@@ -26,9 +23,9 @@
 		B29F2BF81F70EFE600FDA432 /* OOHttpAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = B29F2BE81F70EFE600FDA432 /* OOHttpAnalysis.m */; };
 		B29F2BF91F70EFE600FDA432 /* OOHttpCacheRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B29F2BEA1F70EFE600FDA432 /* OOHttpCacheRequest.m */; };
 		B29F2BFA1F70EFE600FDA432 /* OOHttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B29F2BEC1F70EFE600FDA432 /* OOHttpManager.m */; };
-		B29F2BFB1F70EFE600FDA432 /* OOHttpModelAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = B29F2BEE1F70EFE600FDA432 /* OOHttpModelAnalysis.m */; };
 		B29F2BFC1F70EFE600FDA432 /* OOHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B29F2BF01F70EFE600FDA432 /* OOHttpRequest.m */; };
 		B29F2BFD1F70EFE600FDA432 /* OOHttpRequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B29F2BF21F70EFE600FDA432 /* OOHttpRequestConfig.m */; };
+		B29F2C221F7156B100FDA432 /* OOHttpModelAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = B29F2C211F7156B100FDA432 /* OOHttpModelAnalysis.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,12 +64,6 @@
 		B29F2BBE1F70EECA00FDA432 /* OOHttpRequestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OOHttpRequestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B29F2BC21F70EECA00FDA432 /* OOHttpRequestUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OOHttpRequestUITests.m; sourceTree = "<group>"; };
 		B29F2BC41F70EECA00FDA432 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B29F2BD21F70EFD600FDA432 /* NSArray+UnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+UnicodeReadable.h"; sourceTree = "<group>"; };
-		B29F2BD31F70EFD600FDA432 /* NSArray+UnicodeReadable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+UnicodeReadable.m"; sourceTree = "<group>"; };
-		B29F2BD41F70EFD600FDA432 /* NSDictionary+UnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+UnicodeReadable.h"; sourceTree = "<group>"; };
-		B29F2BD51F70EFD600FDA432 /* NSDictionary+UnicodeReadable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+UnicodeReadable.m"; sourceTree = "<group>"; };
-		B29F2BD61F70EFD600FDA432 /* NSSet+UnicodeReadable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+UnicodeReadable.h"; sourceTree = "<group>"; };
-		B29F2BD71F70EFD600FDA432 /* NSSet+UnicodeReadable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+UnicodeReadable.m"; sourceTree = "<group>"; };
 		B29F2BDC1F70EFDD00FDA432 /* ConsultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultModel.h; sourceTree = "<group>"; };
 		B29F2BDD1F70EFDD00FDA432 /* ConsultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultModel.m; sourceTree = "<group>"; };
 		B29F2BDE1F70EFDD00FDA432 /* GardenNoticeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GardenNoticeViewCell.h; sourceTree = "<group>"; };
@@ -87,14 +78,14 @@
 		B29F2BEA1F70EFE600FDA432 /* OOHttpCacheRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOHttpCacheRequest.m; sourceTree = "<group>"; };
 		B29F2BEB1F70EFE600FDA432 /* OOHttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOHttpManager.h; sourceTree = "<group>"; };
 		B29F2BEC1F70EFE600FDA432 /* OOHttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOHttpManager.m; sourceTree = "<group>"; };
-		B29F2BED1F70EFE600FDA432 /* OOHttpModelAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOHttpModelAnalysis.h; sourceTree = "<group>"; };
-		B29F2BEE1F70EFE600FDA432 /* OOHttpModelAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOHttpModelAnalysis.m; sourceTree = "<group>"; };
 		B29F2BEF1F70EFE600FDA432 /* OOHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOHttpRequest.h; sourceTree = "<group>"; };
 		B29F2BF01F70EFE600FDA432 /* OOHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOHttpRequest.m; sourceTree = "<group>"; };
 		B29F2BF11F70EFE600FDA432 /* OOHttpRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOHttpRequestConfig.h; sourceTree = "<group>"; };
 		B29F2BF21F70EFE600FDA432 /* OOHttpRequestConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOHttpRequestConfig.m; sourceTree = "<group>"; };
 		B29F2BF31F70EFE600FDA432 /* OOHttpSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOHttpSingleton.h; sourceTree = "<group>"; };
 		B29F2BF41F70EFE600FDA432 /* OONetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OONetworking.h; sourceTree = "<group>"; };
+		B29F2C201F7156B100FDA432 /* OOHttpModelAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOHttpModelAnalysis.h; sourceTree = "<group>"; };
+		B29F2C211F7156B100FDA432 /* OOHttpModelAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOHttpModelAnalysis.m; sourceTree = "<group>"; };
 		D7228565838E0E850E12C33F /* Pods-OOHttpRequest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OOHttpRequest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OOHttpRequest/Pods-OOHttpRequest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -153,6 +144,8 @@
 				B29F2BA11F70EECA00FDA432 /* AppDelegate.m */,
 				B29F2BA31F70EECA00FDA432 /* ViewController.h */,
 				B29F2BA41F70EECA00FDA432 /* ViewController.m */,
+				B29F2C201F7156B100FDA432 /* OOHttpModelAnalysis.h */,
+				B29F2C211F7156B100FDA432 /* OOHttpModelAnalysis.m */,
 				B29F2BD01F70EFCD00FDA432 /* code */,
 				B29F2BA61F70EECA00FDA432 /* Main.storyboard */,
 				B29F2BA91F70EECA00FDA432 /* Assets.xcassets */,
@@ -194,22 +187,8 @@
 			children = (
 				B29F2BE21F70EFE600FDA432 /* OONetworking */,
 				B29F2BDB1F70EFDD00FDA432 /* 园区公告 */,
-				B29F2BD11F70EFD600FDA432 /* HYBUnicodeReadable */,
 			);
 			path = code;
-			sourceTree = "<group>";
-		};
-		B29F2BD11F70EFD600FDA432 /* HYBUnicodeReadable */ = {
-			isa = PBXGroup;
-			children = (
-				B29F2BD21F70EFD600FDA432 /* NSArray+UnicodeReadable.h */,
-				B29F2BD31F70EFD600FDA432 /* NSArray+UnicodeReadable.m */,
-				B29F2BD41F70EFD600FDA432 /* NSDictionary+UnicodeReadable.h */,
-				B29F2BD51F70EFD600FDA432 /* NSDictionary+UnicodeReadable.m */,
-				B29F2BD61F70EFD600FDA432 /* NSSet+UnicodeReadable.h */,
-				B29F2BD71F70EFD600FDA432 /* NSSet+UnicodeReadable.m */,
-			);
-			path = HYBUnicodeReadable;
 			sourceTree = "<group>";
 		};
 		B29F2BDB1F70EFDD00FDA432 /* 园区公告 */ = {
@@ -226,24 +205,22 @@
 		B29F2BE21F70EFE600FDA432 /* OONetworking */ = {
 			isa = PBXGroup;
 			children = (
-				B29F2BE31F70EFE600FDA432 /* OOCacheManager.h */,
-				B29F2BE41F70EFE600FDA432 /* OOCacheManager.m */,
-				B29F2BE51F70EFE600FDA432 /* OOChainedHttpRequest.h */,
-				B29F2BE61F70EFE600FDA432 /* OOChainedHttpRequest.m */,
-				B29F2BE71F70EFE600FDA432 /* OOHttpAnalysis.h */,
-				B29F2BE81F70EFE600FDA432 /* OOHttpAnalysis.m */,
-				B29F2BE91F70EFE600FDA432 /* OOHttpCacheRequest.h */,
-				B29F2BEA1F70EFE600FDA432 /* OOHttpCacheRequest.m */,
-				B29F2BEB1F70EFE600FDA432 /* OOHttpManager.h */,
-				B29F2BEC1F70EFE600FDA432 /* OOHttpManager.m */,
-				B29F2BED1F70EFE600FDA432 /* OOHttpModelAnalysis.h */,
-				B29F2BEE1F70EFE600FDA432 /* OOHttpModelAnalysis.m */,
-				B29F2BEF1F70EFE600FDA432 /* OOHttpRequest.h */,
-				B29F2BF01F70EFE600FDA432 /* OOHttpRequest.m */,
 				B29F2BF11F70EFE600FDA432 /* OOHttpRequestConfig.h */,
 				B29F2BF21F70EFE600FDA432 /* OOHttpRequestConfig.m */,
 				B29F2BF31F70EFE600FDA432 /* OOHttpSingleton.h */,
 				B29F2BF41F70EFE600FDA432 /* OONetworking.h */,
+				B29F2BEB1F70EFE600FDA432 /* OOHttpManager.h */,
+				B29F2BEC1F70EFE600FDA432 /* OOHttpManager.m */,
+				B29F2BEF1F70EFE600FDA432 /* OOHttpRequest.h */,
+				B29F2BF01F70EFE600FDA432 /* OOHttpRequest.m */,
+				B29F2BE31F70EFE600FDA432 /* OOCacheManager.h */,
+				B29F2BE41F70EFE600FDA432 /* OOCacheManager.m */,
+				B29F2BE71F70EFE600FDA432 /* OOHttpAnalysis.h */,
+				B29F2BE81F70EFE600FDA432 /* OOHttpAnalysis.m */,
+				B29F2BE91F70EFE600FDA432 /* OOHttpCacheRequest.h */,
+				B29F2BEA1F70EFE600FDA432 /* OOHttpCacheRequest.m */,
+				B29F2BE51F70EFE600FDA432 /* OOChainedHttpRequest.h */,
+				B29F2BE61F70EFE600FDA432 /* OOChainedHttpRequest.m */,
 			);
 			path = OONetworking;
 			sourceTree = "<group>";
@@ -456,13 +433,10 @@
 				B29F2BA51F70EECA00FDA432 /* ViewController.m in Sources */,
 				B29F2BA21F70EECA00FDA432 /* AppDelegate.m in Sources */,
 				B29F2BF61F70EFE600FDA432 /* OOCacheManager.m in Sources */,
-				B29F2BD81F70EFD600FDA432 /* NSArray+UnicodeReadable.m in Sources */,
-				B29F2BFB1F70EFE600FDA432 /* OOHttpModelAnalysis.m in Sources */,
-				B29F2BDA1F70EFD600FDA432 /* NSSet+UnicodeReadable.m in Sources */,
-				B29F2BD91F70EFD600FDA432 /* NSDictionary+UnicodeReadable.m in Sources */,
 				B29F2BE01F70EFDD00FDA432 /* ConsultModel.m in Sources */,
 				B29F2B9F1F70EECA00FDA432 /* main.m in Sources */,
 				B29F2BF81F70EFE600FDA432 /* OOHttpAnalysis.m in Sources */,
+				B29F2C221F7156B100FDA432 /* OOHttpModelAnalysis.m in Sources */,
 				B29F2BFC1F70EFE600FDA432 /* OOHttpRequest.m in Sources */,
 				B29F2BF71F70EFE600FDA432 /* OOChainedHttpRequest.m in Sources */,
 				B29F2BFD1F70EFE600FDA432 /* OOHttpRequestConfig.m in Sources */,

@@ -38,6 +38,7 @@ OOHttpSingletonM
     [[OOHttpAnalysis sharedInstance] requestConfig:^(OOHttpRequestConfig *config) {
         
         config.url          = configs.url;
+        config.urlExplain   = configs.urlExplain;
         config.baseUrl      = configs.baseUrl;
         config.param        = configs.param;
         config.method       = configs.method;

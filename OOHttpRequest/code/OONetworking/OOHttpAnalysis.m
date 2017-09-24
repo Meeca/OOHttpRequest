@@ -45,6 +45,7 @@ OOHttpSingletonM
     NSURLSessionTask *session  = [[OOHttpCacheRequest alloc] requestConfig:^(OOHttpRequestConfig *config) {
         
         config.url          =   self.config.url;
+        config.urlExplain   =   self.config.urlExplain;
         config.baseUrl      =   self.config.baseUrl;
         config.param        =   self.config.param;
         config.method       =   self.config.method;
@@ -53,7 +54,6 @@ OOHttpSingletonM
         config.cache        =   self.config.cache;
         config.log          =   self.config.log;
 
-
     }  progress:^(float progres) {
         
         progress(progres);
@@ -61,7 +61,6 @@ OOHttpSingletonM
     } cacheSuccess:^(id responseObjects) {
         
         [self returnResponseObject:responseObjects cache:YES success:cacheSuccess failure:failure];
-        
         
     } success:^(id responseObject) {
         
@@ -168,7 +167,8 @@ OOHttpSingletonM
     BOOL log = self.config.log;
     if (log) {
         NSString * msg = cache?@"缓存数据":@"网络请求数据";
-       printf("\n\nOOHttpAnalysis\n %s \n📍\n%s\n📍\n",[msg UTF8String],[[NSString stringWithFormat:@"%@", info] UTF8String]);
+        NSString * explain = self.config.urlExplain?self.config.urlExplain:@"请求地址";
+       printf("\n\n🎈 %s  <%s> \n📍\n%s\n📍\n",[explain UTF8String],[msg UTF8String],[[NSString stringWithFormat:@"%@", info] UTF8String]);
     }
 #else
 #endif

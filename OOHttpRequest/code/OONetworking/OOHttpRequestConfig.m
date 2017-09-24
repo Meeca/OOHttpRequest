@@ -43,6 +43,14 @@
     };
 }
 
+- (OOHttpRequestConfig *(^)(NSString * string))explain{
+    return ^OOHttpRequestConfig * (NSString * string) {
+        self.urlExplain = string;
+        return self;
+    };
+}
+
+
 - (OOHttpRequestConfig *(^)(OORequestMethod ))methodType{
  
     return ^OOHttpRequestConfig * (OORequestMethod methodType) {
@@ -75,7 +83,6 @@
         return self;
     };
 }
-
 - (OOHttpRequestConfig *(^)(NSArray * array))array{
     
     return ^OOHttpRequestConfig * (NSArray *array) {
@@ -149,23 +156,134 @@
     };
 }
 
+@end
 
 
 
 
+#pragma mark - NSDictionary,NSArray,NSSet 的分类
+/*
+ ************************************************************************************
+ *新建NSDictionary与NSArray的分类, 控制台打印json数据中的中文
+ ************************************************************************************
+ */
+
+#ifdef DEBUG
+@implementation NSArray (OOHttp)
+
+- (NSString *)descriptionWithLocale:(id)locale indent:(NSUInteger)level {
+    NSMutableString *desc = [NSMutableString string];
+    
+    NSMutableString *tabString = [[NSMutableString alloc] initWithCapacity:level];
+    for (NSUInteger i = 0; i < level; ++i) {
+        [tabString appendString:@"\t"];
+    }
+    
+    NSString *tab = @"";
+    if (level > 0) {
+        tab = tabString;
+    }
+    [desc appendString:@"\t(\n"];
+    
+    for (id obj in self) {
+        if ([obj isKindOfClass:[NSDictionary class]]
+            || [obj isKindOfClass:[NSArray class]]
+            || [obj isKindOfClass:[NSSet class]]) {
+            NSString *str = [((NSDictionary *)obj) descriptionWithLocale:locale indent:level + 1];
+            [desc appendFormat:@"%@\t%@,\n", tab, str];
+        } else if ([obj isKindOfClass:[NSString class]]) {
+            [desc appendFormat:@"%@\t\"%@\",\n", tab, obj];
+        } else {
+            [desc appendFormat:@"%@\t%@,\n", tab, obj];
+        }
+    }
+    
+    [desc appendFormat:@"%@)", tab];
+    
+    return desc;
+}
 
 
+@end
 
+@implementation NSDictionary (OOHttp)
 
+- (NSString *)descriptionWithLocale:(id)locale indent:(NSUInteger)level {
+    NSMutableString *desc = [NSMutableString string];
+    
+    NSMutableString *tabString = [[NSMutableString alloc] initWithCapacity:level];
+    for (NSUInteger i = 0; i < level; ++i) {
+        [tabString appendString:@"\t"];
+    }
+    
+    NSString *tab = @"";
+    if (level > 0) {
+        tab = tabString;
+    }
+    
+    [desc appendString:@"\t{\n"];
+    
+    // 遍历数组,self就是当前的数组
+    for (id key in self.allKeys) {
+        id obj = [self objectForKey:key];
+        
+        if ([obj isKindOfClass:[NSString class]]) {
+            [desc appendFormat:@"%@\t%@ = \"%@\",\n", tab, key, obj];
+        } else if ([obj isKindOfClass:[NSArray class]]
+                   || [obj isKindOfClass:[NSDictionary class]]
+                   || [obj isKindOfClass:[NSSet class]]) {
+            [desc appendFormat:@"%@\t%@ = %@,\n", tab, key, [obj descriptionWithLocale:locale indent:level + 1]];
+        } else {
+            [desc appendFormat:@"%@\t%@ = %@,\n", tab, key, obj];
+        }
+    }
+    
+    [desc appendFormat:@"%@}", tab];
+    
+    return desc;
+}
 
+@end
 
+@implementation NSSet (OOHttp)
 
-
+- (NSString *)descriptionWithLocale:(id)locale indent:(NSUInteger)level {
+    NSMutableString *desc = [NSMutableString string];
+    
+    NSMutableString *tabString = [[NSMutableString alloc] initWithCapacity:level];
+    for (NSUInteger i = 0; i < level; ++i) {
+        [tabString appendString:@"\t"];
+    }
+    
+    NSString *tab = @"\t";
+    if (level > 0) {
+        tab = tabString;
+    }
+    [desc appendString:@"\t{(\n"];
+    
+    for (id obj in self) {
+        if ([obj isKindOfClass:[NSDictionary class]]
+            || [obj isKindOfClass:[NSArray class]]
+            || [obj isKindOfClass:[NSSet class]]) {
+            NSString *str = [((NSDictionary *)obj) descriptionWithLocale:locale indent:level + 1];
+            [desc appendFormat:@"%@\t%@,\n", tab, str];
+        } else if ([obj isKindOfClass:[NSString class]]) {
+            [desc appendFormat:@"%@\t\"%@\",\n", tab, obj];
+        } else {
+            [desc appendFormat:@"%@\t%@,\n", tab, obj];
+        }
+    }
+    
+    [desc appendFormat:@"%@)}", tab];
+    
+    return desc;
+}
 
 @end
 
 
 
+#endif
 
 
 

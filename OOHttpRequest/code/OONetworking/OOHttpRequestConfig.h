@@ -30,6 +30,10 @@ typedef NS_ENUM(NSInteger, OORequestMethod) {
 
 //请求地址
 @property (nonatomic, copy) NSString * url;
+
+//请求地址说明
+@property (nonatomic, copy) NSString * urlExplain;
+
 //请求方式
 @property (nonatomic, assign) OORequestMethod  method;
 
@@ -61,7 +65,6 @@ typedef NS_ENUM(NSInteger, OORequestMethod) {
 @property (nonatomic,assign) NSTimeInterval requestMinTime;
 
 
-
 /**********************  HUD  ******************************/
 
 @property (nonatomic, assign) BOOL  hud;
@@ -88,6 +91,9 @@ typedef NS_ENUM(NSInteger, OORequestMethod) {
 
 
 - (OOHttpRequestConfig *(^)(NSString * string))urlStr;
+
+- (OOHttpRequestConfig *(^)(NSString * string))explain;
+
 
 - (OOHttpRequestConfig *(^)(NSString * string))baseURL;
 

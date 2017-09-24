@@ -17,6 +17,9 @@ OOHttpSingletonH
 /*!
  *   baseUrl 网络接口的基础url
  */
+
+
+
 @property (nonatomic,copy) NSString * baseUrl;
 
 + (AFHTTPSessionManager *)managerBaseUrl:(NSString *)baseUrl;
@@ -25,5 +28,6 @@ OOHttpSingletonH
 
 + (BOOL)examineNetwork;
 
+- (void)networkStatusWithBlock:(void (^)(AFNetworkReachabilityStatus status,NSString * netState))networkStatus;
 
 @end
