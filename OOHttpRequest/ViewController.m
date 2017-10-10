@@ -55,6 +55,7 @@
         config.hud = YES;
         config.log = NO;
         config.urlExplain = @"资讯列表";
+        config.cache = YES;
         
     } progress:^(float progres) {
         
@@ -80,13 +81,11 @@
     NSMutableDictionary * params = [NSMutableDictionary new];
     params[@"proprietorid"] = @"28";
     
-    
     [[[OOHttpAnalysis alloc] init] requestConfig:^(OOHttpRequestConfig *config) {
 
         config.url = @"/api/proprietor/read";
         config.param = params;
         config.urlExplain = @"订单列表";
-        
      
     } progress:^(float progres) {
 

@@ -28,11 +28,9 @@ static NSMutableArray *requestTasks;
                                 success:( void (^)(id responseObject))success
                                 failure:( void (^)(NSString * error))failure{
 
-    
     if (block) {
         block(self.config);
     }
-    
     NSString * url          = self.config.url;              // 请求地址
     NSString * baseUrl      = self.config.baseUrl;          // 请求域名地址
     NSDictionary * param    = self.config.param;            // 请求参数
@@ -140,8 +138,6 @@ static NSMutableArray *requestTasks;
         default:
             break;
     }
-
-
     if (session) {
         [[self allTasks] addObject:session];
     }
@@ -166,7 +162,6 @@ static NSMutableArray *requestTasks;
     });
     return requestTasks;
 }
-
 /**
  *  取消所有网络请求
  */

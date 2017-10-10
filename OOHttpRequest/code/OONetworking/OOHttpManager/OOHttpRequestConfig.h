@@ -74,10 +74,6 @@ typedef NS_ENUM(NSInteger, OORequestMethod) {
 @property (nonatomic,copy) NSString * failureMsg;
 
 
-
-
-
-
 //链式编程体验
 - (OOHttpRequestConfig *(^)(BOOL isHud))isHud;
 

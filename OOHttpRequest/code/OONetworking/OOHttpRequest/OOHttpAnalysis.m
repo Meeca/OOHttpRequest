@@ -102,7 +102,7 @@
             if ([code isEqualToString:@"0"]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
-                    cache?@"":[self successMsg:msg];
+                    cache?[OOHudTools hide]:[self successMsg:msg];
 
                     success(info,msg);
                 });

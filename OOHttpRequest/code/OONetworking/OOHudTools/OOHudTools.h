@@ -23,5 +23,6 @@
 + (void)showSuccessStatusWithtitle:(NSString *)title;
 + (void)showSuccessStatusInView:(UIView *)view title:(NSString *)title;
 
++ (void)hide;
 + (void)hideInView:(UIView *)view;
 @end
