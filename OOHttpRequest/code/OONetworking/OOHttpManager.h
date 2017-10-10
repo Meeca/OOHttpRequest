@@ -18,8 +18,6 @@ OOHttpSingletonH
  *   baseUrl 网络接口的基础url
  */
 
-
-
 @property (nonatomic,copy) NSString * baseUrl;
 
 + (AFHTTPSessionManager *)managerBaseUrl:(NSString *)baseUrl;

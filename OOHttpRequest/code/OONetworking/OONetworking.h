@@ -15,6 +15,7 @@
 #import "OOHttpAnalysis.h"          // 带初步解析json数据的网络请求
 #import "OOChainedHttpRequest.h"    // 链式网络请求
 #import "OOCacheManager.h"          // 缓存管理
+#import "OOHudTools.h"              // HUD
 
 
 #ifdef DEBUG

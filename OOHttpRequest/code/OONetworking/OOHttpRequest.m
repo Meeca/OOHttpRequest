@@ -22,7 +22,6 @@ static NSMutableArray *requestTasks;
 
 @implementation OOHttpRequest
 
-OOHttpSingletonM
 
 - (NSURLSessionTask *)requestConfig:( void (^)(OOHttpRequestConfig *config))block
                                progress:( void (^)(float progres))progress
@@ -51,7 +50,6 @@ OOHttpSingletonM
     }
     
     [self logInfoWithUrl:url withParame:param];
-
     
     AFHTTPSessionManager * manager = [OOHttpManager managerBaseUrl:baseUrl];
 
@@ -204,7 +202,7 @@ OOHttpSingletonM
 
 - (OOHttpRequestConfig *)config {
     if (_config == nil) {
-        _config = [OOHttpRequestConfig defultCongfig];
+        _config = [OOHttpRequestConfig  defultCongfig];
     }
     return _config;
 }

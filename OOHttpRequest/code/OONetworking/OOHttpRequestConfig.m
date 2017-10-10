@@ -19,10 +19,11 @@
 + (instancetype)defultCongfig {
     OOHttpRequestConfig *config = [OOHttpRequestConfig new];
     config.method               = OORequestMethodPOST;
-    config.cache                = YES;
+    config.cache                = NO;
     config.log                  = YES;
     config.cacheMaxAge          = 60*60*24*7;
     config.requestMinTime       = 30;
+    
     return config;
 }
 

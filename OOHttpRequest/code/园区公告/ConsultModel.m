@@ -28,7 +28,7 @@
     NSMutableDictionary * params = [NSMutableDictionary new];
     params[@"cid"] = @"2";
 
-    [[OOHttpAnalysis sharedInstance] requestConfig:^(OOHttpRequestConfig *config) {
+    [[[OOHttpAnalysis alloc] init] requestConfig:^(OOHttpRequestConfig *config) {
         
         config.url = @"/api/news/getList/cid";
         config.param = params;

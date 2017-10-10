@@ -38,7 +38,7 @@ OOHttpSingletonM
     
     __block NSArray * cacheArray = nil;
     
-    NSURLSessionTask *session = [[OOHttpAnalysis sharedInstance]  requestConfig:^(OOHttpRequestConfig *config) {
+    NSURLSessionTask *session = [[[OOHttpAnalysis alloc]init]  requestConfig:^(OOHttpRequestConfig *config) {
         
         config = self.config;
         
@@ -92,7 +92,7 @@ OOHttpSingletonM
 
 - (OOHttpRequestConfig *)config {
     if (_config == nil) {
-        _config = [OOHttpRequestConfig defultCongfig];
+        _config = [OOHttpRequestConfig  defultCongfig];
     }
     return _config;
 }

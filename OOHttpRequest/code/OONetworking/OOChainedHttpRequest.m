@@ -35,7 +35,7 @@ OOHttpSingletonM
 
 - (void)startRequestAPIWithRecorder:(OOHttpRequestConfig *)configs {
     
-    [[OOHttpAnalysis sharedInstance] requestConfig:^(OOHttpRequestConfig *config) {
+    [[[OOHttpAnalysis alloc]init] requestConfig:^(OOHttpRequestConfig *config) {
         
         config.url          = configs.url;
         config.urlExplain   = configs.urlExplain;
@@ -111,7 +111,7 @@ OOHttpSingletonM
 
 - (OOHttpRequestConfig *)config {
     if (_config == nil) {
-        _config = [OOHttpRequestConfig defultCongfig];
+        _config = [OOHttpRequestConfig  defultCongfig];
     }
     return _config;
 }

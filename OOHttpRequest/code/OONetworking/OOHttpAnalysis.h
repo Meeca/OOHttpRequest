@@ -12,7 +12,6 @@
 
 @interface OOHttpAnalysis : NSObject
 
-OOHttpSingletonH
 
 /*!
  *  请求数据并且进一步解析

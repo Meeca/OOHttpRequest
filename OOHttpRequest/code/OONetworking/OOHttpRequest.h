@@ -12,8 +12,6 @@
 
 @interface OOHttpRequest : NSObject
 
-OOHttpSingletonH
-
 /**********************   POST    ****************************/
 
 /*!

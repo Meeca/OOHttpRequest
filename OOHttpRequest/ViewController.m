@@ -9,9 +9,7 @@
 #import "ViewController.h"
 #import "GardenNoticeViewCell.h"
 #import "ConsultModel.h"
-#import "OOHttpModelAnalysis.h"
 #import "OOHttpAnalysis.h"
-#import "OOChainedHttpRequest.h"
 
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -32,49 +30,11 @@
     _dataArray = [NSMutableArray new];
     
     [self.view addSubview:self.tableView];
+    //
     
-    NSMutableDictionary * params = [NSMutableDictionary new];
-    params[@"u_id"] = @"8";
-    params[@"a_id"] = @"259";
-    params[@"lat"] = @"44";
-    params[@"long"] = @"166";
-
+    [self OOHttpAnalysis];
     
-http://www.pidans.xyz/temperature//api.php/Index/index?u_id=8&lat=0&long=0&a_id=166
-
-    
-    [OORequest requestConfig:^(OOHttpRequestConfig *config) {
-        
-        config.url = @"/temperature//api.php/Index/index";
-        config.baseUrl = @"http://www.pidans.xyz";
-        config.param = params;
-        config.dataArray = _dataArray;
-        config.cache = YES;
-        config.hud = YES;
-//        config.loadingMsg = @"123";
-        config.succMsg = @"加载成功";
-        config.urlExplain = @"地址说明";
-
-    }]
-    .startRequest()
-    .progress(^(float progres){
-        NSLog(@"----------------------  %f",progres);
-    })
-    .cacheData(^(id responseObject){
-        
-//        NSLog(@"缓存--- \n%@",responseObject);
-        
-    })
-    .success(^(id responseObject,NSString * msg){
-        
-//        NSLog(@"网络--- \n%@",responseObject);
-        
-    })
-    .failure(^(NSString * error,NSInteger code){
-        
-        
-    });
-    
+    [self OOHttpAnalysis1];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -86,30 +46,87 @@ http://www.pidans.xyz/temperature//api.php/Index/index?u_id=8&lat=0&long=0&a_id=
     NSMutableDictionary * params = [NSMutableDictionary new];
     params[@"cid"] = @"2";
     
+ 
     
-    [[OOHttpAnalysis sharedInstance] requestConfig:^(OOHttpRequestConfig *config) {
+    [[[OOHttpAnalysis alloc] init] requestConfig:^(OOHttpRequestConfig *config) {
         
         config.url = @"/api/news/getList/cid";
         config.param = params;
-        config.cache = YES;
-        config.urlExplain = @"地址说明";
+        config.hud = YES;
+        config.log = NO;
+        config.urlExplain = @"资讯列表";
         
     } progress:^(float progres) {
         
         
     } cacheSuccess:^(id responseObject, NSString *msg) {
         
-//        NSLog(@"缓存cacheSuccess ---  \n %@",responseObject);
+        //        NSLog(@"缓存cacheSuccess ---  \n %@",responseObject);
         
     } success:^(id responseObject, NSString *msg) {
         
-//        NSLog(@"网络success ---  \n %@",responseObject);
+        //        NSLog(@"网络success ---  \n %@",responseObject);
         
     } failure:^(NSString *error, NSInteger code) {
         
     }];
     
 }
+
+
+
+- (void)OOHttpAnalysis1{
+    
+    NSMutableDictionary * params = [NSMutableDictionary new];
+    params[@"proprietorid"] = @"28";
+    
+    
+    [[[OOHttpAnalysis alloc] init] requestConfig:^(OOHttpRequestConfig *config) {
+
+        config.url = @"/api/proprietor/read";
+        config.param = params;
+        config.urlExplain = @"订单列表";
+        
+     
+    } progress:^(float progres) {
+
+        
+    } cacheSuccess:^(id responseObject, NSString *msg) {
+        
+        //        NSLog(@"缓存cacheSuccess ---  \n %@",responseObject);
+        
+    } success:^(id responseObject, NSString *msg) {
+        
+        //        NSLog(@"网络success ---  \n %@",responseObject);
+        
+    } failure:^(NSString *error, NSInteger code) {
+        
+    }];
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #pragma mark - UITableViewDelegate UITableViewDataSource
@@ -124,10 +141,10 @@ http://www.pidans.xyz/temperature//api.php/Index/index?u_id=8&lat=0&long=0&a_id=
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     GardenNoticeViewCell * cell  = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([GardenNoticeViewCell class])];
-//    if (_dataArray.count > indexPath.section) {
-//        ConsultModel * consultModel = _dataArray[indexPath.section];
-//        cell.consultModel  =consultModel;
-//    }
+    //    if (_dataArray.count > indexPath.section) {
+    //        ConsultModel * consultModel = _dataArray[indexPath.section];
+    //        cell.consultModel  =consultModel;
+    //    }
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -180,4 +197,5 @@ http://www.pidans.xyz/temperature//api.php/Index/index?u_id=8&lat=0&long=0&a_id=
 }
 
 
- @end
+@end
+

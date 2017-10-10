@@ -73,7 +73,7 @@
     }
     
     NSURLSessionTask * session = nil;
-    session= [[OOHttpRequest sharedInstance] requestConfig:^(OOHttpRequestConfig *config) {
+    session= [[[OOHttpRequest alloc] init] requestConfig:^(OOHttpRequestConfig *config) {
         
         config.url          = self.config.url;
         config.baseUrl      = self.config.baseUrl;
@@ -194,7 +194,7 @@
 
 - (OOHttpRequestConfig *)config {
     if (_config == nil) {
-        _config = [OOHttpRequestConfig defultCongfig];
+        _config = [OOHttpRequestConfig  defultCongfig];
     }
     return _config;
 }

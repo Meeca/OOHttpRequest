@@ -10,7 +10,7 @@
 #import "OOHttpRequest.h"
 #import "OOHttpCacheRequest.h"
 #import <LxDBAnything/LxDBAnything.h>
-#import <SVProgressHUD/SVProgressHUD.h>
+#import "OOHudTools.h"
 
 @interface OOHttpAnalysis()
 
@@ -21,7 +21,8 @@
 
 @implementation OOHttpAnalysis
 
-OOHttpSingletonM
+
+
 /*!
  *  请求数据并且进一步解析
  *  @param block    请求配置
@@ -36,10 +37,13 @@ OOHttpSingletonM
                                 success:( void (^)(id responseObject,NSString * msg))success
                                 failure:( void (^)(NSString * error,NSInteger code))failure{
 
+    
+    
+    self.config = nil;
+    
     if (block) {
         block(self.config);
     }
-
     [self loading];
     
     NSURLSessionTask *session  = [[OOHttpCacheRequest alloc] requestConfig:^(OOHttpRequestConfig *config) {
@@ -115,7 +119,7 @@ OOHttpSingletonM
 
 - (OOHttpRequestConfig *)config {
     if (_config == nil) {
-        _config = [OOHttpRequestConfig defultCongfig];
+        _config = [OOHttpRequestConfig  defultCongfig];
     }
     return _config;
 }
@@ -125,12 +129,11 @@ OOHttpSingletonM
 
     BOOL hud = self.config.hud;
     NSString * loading = self.config.loadingMsg;
-
     if (hud) {
         if (loading) {
-            [SVProgressHUD showWithStatus:loading];
+            [OOHudTools showLoadingWithtitle:loading];
         }else{
-            [SVProgressHUD show];
+            [OOHudTools showLoading];
         }
     }
 }
@@ -142,9 +145,9 @@ OOHttpSingletonM
 
     if (hud) {
         if (msg) {
-            [SVProgressHUD showSuccessWithStatus:msg];
-        }else{
-            [SVProgressHUD showSuccessWithStatus:message];
+            [OOHudTools showSuccessStatusWithtitle:msg];
+         }else{
+             [OOHudTools showSuccessStatusWithtitle:message];
         }
     }
 }
@@ -155,9 +158,9 @@ OOHttpSingletonM
     NSString * msg = self.config.failureMsg;
     if (hud) {
         if (msg) {
-            [SVProgressHUD showErrorWithStatus:msg];
+            [OOHudTools showErrorStatusWithtitle:msg];
         }else{
-            [SVProgressHUD showErrorWithStatus:error];
+            [OOHudTools showErrorStatusWithtitle:error];
         }
     }
 }
@@ -173,8 +176,6 @@ OOHttpSingletonM
 #else
 #endif
 }
-
-
 
 
 @end

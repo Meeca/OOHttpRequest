@@ -43,7 +43,6 @@ typedef NS_ENUM(NSInteger, OORequestMethod) {
 // 是否打印log信息
 @property (nonatomic, assign) BOOL  log;
 
-
 // 需要处理的数据数组
 @property (nonatomic, strong) NSArray * dataArray;
 
@@ -53,15 +52,14 @@ typedef NS_ENUM(NSInteger, OORequestMethod) {
 // 服务器对应的图片的key
 @property (nonatomic, copy) NSString * attach;
 
-
 /**********************  缓存  ******************************/
 //是否缓存数据
 @property (nonatomic, assign) BOOL  cache;
 
-// 缓存过期时间
+// 缓存过期时间 默认： 60*60*24*7
 @property (nonatomic,assign) NSTimeInterval cacheMaxAge;
 
-// 同一个请求间隔多长时间才能重新请求（用于缓存）
+// 同一个请求间隔多长时间才能重新请求（用于缓存） 默认：30s
 @property (nonatomic,assign) NSTimeInterval requestMinTime;
 
 

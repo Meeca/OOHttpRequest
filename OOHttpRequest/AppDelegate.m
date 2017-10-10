@@ -20,20 +20,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     
-    [OOHttpManager sharedInstance].baseUrl = @"http://www.pidans.xyz";
-    
+    [OOHttpManager sharedInstance].baseUrl = @"http://wuye.oyaoyin.com";
+
 //    http://www.pidans.xyz/temperature//api.php/Index/index?u_id=8&lat=0&long=0&a_id=166
     
     NSString *cachePath = [[OOCacheManager sharedInstance] OOKitPath];
     LxPrintf(@"cachePath = %@",cachePath);
     
-    
     [[OOHttpManager sharedInstance] networkStatusWithBlock:^(AFNetworkReachabilityStatus status, NSString *netState) {
         
     }];
     
-    
-    
+ 
     // Override point for customization after application launch.
     return YES;
 }
