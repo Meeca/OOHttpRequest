@@ -11,8 +11,6 @@
 
 @interface OOHttpCacheRequest : NSObject
 
-
-
 /*!
  *  请求数据
  *  @param block    请求配置

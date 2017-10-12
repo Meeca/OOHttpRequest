@@ -59,7 +59,6 @@
         }else{
             
             [[OOCacheManager sharedInstance] getCacheDataForKey:urlKey value:^(id responseObj, NSString *filePath) {
-                
                 response  = responseObj;
                 cacheSuccess(response);
             }];
@@ -96,7 +95,8 @@
             BOOL same = [self judgeCacheDataIsSameWithCache:response netData:responseObject];
             
             [[OOCacheManager sharedInstance] storeContent:responseObject forKey:urlKey];
-            NSLog(@"%@",same?@"缓存数据和网络数据一致":@"数据不一致");
+            
+            self.config.log==NO?nil:NSLog(@"%@",same?@"缓存数据和网络数据一致":@"数据不一致");
             // 如果缓存数据和网络数据不一致，返回数据，
             if (!same) {
                 success(responseObject);

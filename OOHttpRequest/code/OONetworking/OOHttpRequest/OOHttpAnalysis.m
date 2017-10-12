@@ -9,7 +9,6 @@
 #import "OOHttpAnalysis.h"
 #import "OOHttpRequest.h"
 #import "OOHttpCacheRequest.h"
-#import <LxDBAnything/LxDBAnything.h>
 #import "OOHudTools.h"
 #import "OOHttpManager.h"
 
@@ -171,32 +170,13 @@
         NSString * urls = [[OOHttpManager sharedInstance].baseUrl stringByAppendingString:self.config.url];
         NSString * urlstr = [OOHttpManager urlString:urls appendingParameters:self.config.param];
         NSString * explain = self.config.urlExplain?self.config.urlExplain:@"请求地址";
-        
         NSString * msg = cache?@"缓存数据":@"网络请求数据";
-        
         NSString * infostr = [NSString stringWithFormat:@"%@", info];
         
         printf("\n🍏\n🍏🍎🍏 %s  👉🌐  %s\n🍏👉🍏 %s\n👇👇👇👇👇👇👇👇👇👇👇👇👇👇\n%s\n👆👆👆👆👆👆👆👆👆👆👆👆👆👆\n",[[NSString stringWithFormat:@"%@", explain] UTF8String], [[NSString stringWithFormat:@"%@", urlstr] UTF8String],[msg UTF8String],[infostr UTF8String]);
-        
-        
     }
 #else
 #endif
 }
-    
-    - (void)logInfoWithUrl:(NSString *)url withParame:(id)parame{
-        //   ❌❓‼️❗️⚠️
-#ifdef DEBUG
-        BOOL log = self.config.log;
-        if (log) {
-            NSString * urls = [[OOHttpManager sharedInstance].baseUrl stringByAppendingString:url];
-            NSString * urlstr = [OOHttpManager urlString:urls appendingParameters:parame];
-            NSString * explain = self.config.urlExplain?self.config.urlExplain:@"请求地址";
-            printf("\n🍏\n🍏🍎🍏 %s  👉🌐  %s\n🍏\n",[[NSString stringWithFormat:@"%@", explain] UTF8String], [[NSString stringWithFormat:@"%@", urlstr] UTF8String]);
-        }
-#else
-#endif
-    }
-
 
 @end

@@ -20,9 +20,9 @@
     OOHttpRequestConfig *config = [OOHttpRequestConfig new];
     config.method               = OORequestMethodPOST;
     config.cache                = NO;
-    config.log                  = YES;
+    config.log                  = NO;
     config.cacheMaxAge          = 60*60*24*7;
-    config.requestMinTime       = 30;
+    config.requestMinTime       = 10;
     
     return config;
 }

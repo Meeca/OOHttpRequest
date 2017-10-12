@@ -8,9 +8,11 @@
 
 #import "ViewController.h"
 #import "GardenNoticeViewCell.h"
-#import "ConsultModel.h"
+
 #import "OONetworking.h"
 
+#import <YYModel/YYModel.h>
+#import "ConsultModel.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -25,8 +27,6 @@
     [super viewDidLoad];
     
     
-    // 🌐
-    
     self.navigationItem.title = @"园区公告";
     
     _dataArray = [NSMutableArray new];
@@ -36,40 +36,55 @@
     
     [self OOHttpAnalysis];
     
-    [self OOHttpAnalysis1];
+//    [self OOHttpAnalysis1];
     // Do any additional setup after loading the view from its nib.
 }
 
 
 - (void)OOHttpAnalysis{
-    
+
     NSMutableDictionary * params = [NSMutableDictionary new];
     params[@"cid"] = @"2";
     
- 
-    
+    __block NSArray * cacheArray = nil;
     [[[OOHttpAnalysis alloc] init] requestConfig:^(OOHttpRequestConfig *config) {
-        
+
         config.url = @"/api/news/getList/cid";
         config.param = params;
         config.hud = YES;
-        config.log = YES;
+//        config.log = YES;
         config.urlExplain = @"资讯列表";
         config.cache = YES;
-        
+
     } progress:^(float progres) {
-        
-        
+
+
     } cacheSuccess:^(id responseObject, NSString *msg) {
-        
-        //        NSLog(@"缓存cacheSuccess ---  \n %@",responseObject);
+
+        NSDictionary * result = (NSDictionary *)responseObject;
+        // 缓存数据
+        NSArray * array = [NSArray yy_modelArrayWithClass:[ConsultModel class] json:result[@"rows"]];
+        cacheArray = array;
+        [_dataArray addObjectsFromArray:array];
+        cacheArray = [NSArray arrayWithArray:_dataArray];
+        [self.tableView reloadData];
+
         
     } success:^(id responseObject, NSString *msg) {
-        
-        //        NSLog(@"网络success ---  \n %@",responseObject);
+
+        // 当缓存数据和网络数据不一致时，会返回网络数据
+
+        [_dataArray removeObjectsInArray:cacheArray];
+
+        NSDictionary * result = (NSDictionary *)responseObject;
+        NSLog(@"---网络---\n\n%@\n\n",result);
+        NSArray * array = [NSArray yy_modelArrayWithClass:[ConsultModel class] json:result[@"rows"]];
+        [_dataArray addObjectsFromArray:array];
+        [self.tableView reloadData];
+
         
     } failure:^(NSString *error, NSInteger code) {
-        
+
     }];
     
 }
@@ -106,31 +121,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #pragma mark - UITableViewDelegate UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 20;
+    return _dataArray.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -140,10 +133,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     GardenNoticeViewCell * cell  = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([GardenNoticeViewCell class])];
-    //    if (_dataArray.count > indexPath.section) {
-    //        ConsultModel * consultModel = _dataArray[indexPath.section];
-    //        cell.consultModel  =consultModel;
-    //    }
+        if (_dataArray.count > indexPath.section) {
+            ConsultModel * consultModel = _dataArray[indexPath.section];
+            cell.consultModel  =consultModel;
+        }
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -151,27 +144,15 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    
-    
+
 }
-
-- (CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 0.0001f;
-}
-
-
-- (CGFloat )tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 0.0001f;
-}
-
 
 
 
 -(UITableView *)tableView
 {
     if(_tableView == nil){
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height) style:UITableViewStylePlain];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
         _tableView.rowHeight = UITableViewAutomaticDimension;
