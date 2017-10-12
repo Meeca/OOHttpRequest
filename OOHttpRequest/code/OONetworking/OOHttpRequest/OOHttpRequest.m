@@ -203,15 +203,15 @@ static NSMutableArray *requestTasks;
 }
 
 - (void)logInfoWithUrl:(NSString *)url withParame:(id)parame{
-    
+    //   ❌❓‼️❗️⚠️
 #ifdef DEBUG
-    BOOL log = self.config.log;
-    if (log) {
-        NSString * urls = [[OOHttpManager sharedInstance].baseUrl stringByAppendingString:url];
-        NSString * urlstr = [OOHttpManager urlString:urls appendingParameters:parame];
-        NSString * explain = self.config.urlExplain?self.config.urlExplain:@"请求地址";
-        printf("\n📍\n🎈   %s \n--->  %s\n📍",[[NSString stringWithFormat:@"%@", explain] UTF8String], [[NSString stringWithFormat:@"%@", urlstr] UTF8String]);
-    }
+//    BOOL log = self.config.log;
+//    if (log) {
+//        NSString * urls = [[OOHttpManager sharedInstance].baseUrl stringByAppendingString:url];
+//        NSString * urlstr = [OOHttpManager urlString:urls appendingParameters:parame];
+//        NSString * explain = self.config.urlExplain?self.config.urlExplain:@"请求地址";
+//        printf("\n🍏\n🍏🍎🍏 %s  👉🌐  %s\n🍏\n",[[NSString stringWithFormat:@"%@", explain] UTF8String], [[NSString stringWithFormat:@"%@", urlstr] UTF8String]);
+//    }
 #else
 #endif
 }

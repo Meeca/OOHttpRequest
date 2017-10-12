@@ -25,8 +25,6 @@
                                 success:( void (^)(id responseObject))success
                                 failure:( void (^)(NSString * error))failure;
 
-
-
 /**
  *  取消所有网络请求
  */

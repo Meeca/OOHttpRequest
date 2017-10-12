@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "GardenNoticeViewCell.h"
 #import "ConsultModel.h"
-#import "OOHttpAnalysis.h"
+#import "OONetworking.h"
 
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -25,6 +25,8 @@
     [super viewDidLoad];
     
     
+    // 🌐
+    
     self.navigationItem.title = @"园区公告";
     
     _dataArray = [NSMutableArray new];
@@ -39,8 +41,6 @@
 }
 
 
-
-
 - (void)OOHttpAnalysis{
     
     NSMutableDictionary * params = [NSMutableDictionary new];
@@ -53,7 +53,7 @@
         config.url = @"/api/news/getList/cid";
         config.param = params;
         config.hud = YES;
-        config.log = NO;
+        config.log = YES;
         config.urlExplain = @"资讯列表";
         config.cache = YES;
         

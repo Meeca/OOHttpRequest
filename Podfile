@@ -5,6 +5,7 @@ target "OOHttpRequest" do
     pod 'Masonry'
     pod 'AFNetworking', '3.1.0'
     pod 'XHToast'
-    pod 'SVProgressHUD'
+    pod 'MBProgressHUD'
+
 end
 
